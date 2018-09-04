@@ -13,11 +13,13 @@ public class jobsDAO extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE Jobs (id INTEGER PRIMARY KEY, jobName TEXT NOT NULL, jobDesc TEXT, priority REAL, isDeletable TEXT);";
-
+        db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        String sql = "DROP TABLE IF EXISTS Alunos";
+        db.execSQL(sql);
+        onCreate(db);
     }
 }
