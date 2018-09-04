@@ -36,5 +36,6 @@ public class jobsDAO extends SQLiteOpenHelper {
         data.put("isDeletable", job.isDeletable());
 
         db.insert("Jobs", null, data);
+        db.close();
     }
 }
