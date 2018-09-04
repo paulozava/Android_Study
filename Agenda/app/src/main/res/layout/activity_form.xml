@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Job description"
                 android:id="@+id/form_jobDesc"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
                 android:id="@+id/form_priority"/>
 
             <CheckBox
+                android:id="@+id/form_deletableJob"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Is it deletable?"
