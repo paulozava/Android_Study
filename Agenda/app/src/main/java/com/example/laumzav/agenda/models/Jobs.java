@@ -5,9 +5,9 @@ public class Jobs {
     private String name;
     private String desc;
     private String isDeletable;
-    private String priority;
+    private float priority;
 
-    public Jobs(String jobName, String jobDesc, String isDeletable, String priority){
+    public Jobs(String jobName, String jobDesc, String isDeletable, float priority){
         this.name = jobName;
         this.desc = jobDesc;
         this.isDeletable = isDeletable;
@@ -26,7 +26,7 @@ public class Jobs {
         return isDeletable;
     }
 
-    public String getPriority() {
+    public float getPriority() {
         return priority;
     }
 }

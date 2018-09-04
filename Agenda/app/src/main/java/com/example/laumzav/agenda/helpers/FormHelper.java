@@ -23,7 +23,7 @@ public class FormHelper {
         job = new Jobs(nameField.getText().toString(),
                 descField.getText().toString(),
                 isDeletable.getText().toString(),
-                Float.toString(priority.getRating()));
+                priority.getRating());
     }
 
     public void saveOnDB(){
