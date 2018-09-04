@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.Toast;
@@ -53,7 +54,11 @@ public class FormActivity extends AppCompatActivity {
         return true;
     }
 
-    public void saveItensOnForm(){
-
+    public String findItemOnForm(int id){
+        EditText itemField = (EditText) findViewById(id);
+        String item = itemField.getText().toString();
+        return item;
     }
+
+
 }
