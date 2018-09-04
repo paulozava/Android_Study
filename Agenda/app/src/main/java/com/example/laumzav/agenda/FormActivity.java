@@ -37,9 +37,6 @@ public class FormActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.form_save_button:
                 FormHelper helper = new FormHelper(this);
-                JobsDAO dao = new JobsDAO(this);
-                helper.saveOnDB(dao);
-                dao.close();
                 Toast.makeText(FormActivity.this, "Job " + helper.getJobName() + " saved", Toast.LENGTH_LONG).show();
                 break;
             case R.id.form_discart_button:
