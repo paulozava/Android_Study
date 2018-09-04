@@ -13,7 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.laumzav.agenda.dao.JobsDAO;
+import com.example.laumzav.agenda.models.Jobs;
+
 import java.text.Normalizer;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        List<Jobs> jobsList = findJobsList();
 
-        String[] names = {"Paulo", "Francisco", "Silva", "Campos", "Machado", "Zava"};
-        ListView nameList = findViewById(R.id.nameList);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, names);
+        ListView nameList = findViewById(R.id.main_nameList);
+        ArrayAdapter<Jobs> adapter = new ArrayAdapter<Jobs>(this, android.R.layout.simple_list_item_1, jobsList);
+
         nameList.setAdapter(adapter);
 
        Button fab = (Button) findViewById(R.id.fab);
@@ -37,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, FormActivity.class));
             }
         });
+    }
+
+    protected List<Jobs> findJobsList() {
+        JobsDAO dao = new JobsDAO(this);
+        List<Jobs> jobsList = dao.findJobs();
+        dao.close();
+        return jobsList;
     }
 
     @Override

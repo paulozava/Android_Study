@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.laumzav.agenda.models.Jobs;
 
+import java.util.List;
+
 public class JobsDAO extends SQLiteOpenHelper {
 
     public JobsDAO(Context context) {
@@ -37,5 +39,9 @@ public class JobsDAO extends SQLiteOpenHelper {
 
         db.insert("Jobs", null, data);
         db.close();
+    }
+
+    public List<Jobs> findJobs() {
+        return List<Jobs>;
     }
 }
