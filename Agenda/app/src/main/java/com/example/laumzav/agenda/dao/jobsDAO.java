@@ -1,8 +1,11 @@
 package com.example.laumzav.agenda.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.laumzav.agenda.models.Jobs;
 
 public class jobsDAO extends SQLiteOpenHelper {
 
@@ -21,5 +24,17 @@ public class jobsDAO extends SQLiteOpenHelper {
         String sql = "DROP TABLE IF EXISTS Alunos";
         db.execSQL(sql);
         onCreate(db);
+    }
+
+    public void insertOnDB(Jobs job){
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues data = new ContentValues();
+        data.put("jobName", job.getName());
+        data.put("jobDesc", job.getDesc());
+        data.put("priority", job.getPriority());
+        data.put("isDeletable", job.isDeletable());
+
+        db.insert("Jobs", null, data);
     }
 }
