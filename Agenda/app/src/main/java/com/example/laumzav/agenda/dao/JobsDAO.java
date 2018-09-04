@@ -59,6 +59,7 @@ public class JobsDAO extends SQLiteOpenHelper {
             );
             jobsFound.add(job);
         }
+        c.close();
         return jobsFound;
 
     }

@@ -4,10 +4,10 @@ public class Jobs {
     private long id;
     private String name;
     private String desc;
-    private String isDeletable;
+    private boolean isDeletable;
     private float priority;
 
-    public Jobs(String jobName, String jobDesc, String isDeletable, float priority){
+    public Jobs(String jobName, String jobDesc, boolean isDeletable, float priority){
         this.name = jobName;
         this.desc = jobDesc;
         this.isDeletable = isDeletable;
@@ -22,11 +22,16 @@ public class Jobs {
         return desc;
     }
 
-    public String isDeletable() {
+    public boolean isDeletable() {
         return isDeletable;
     }
 
     public float getPriority() {
         return priority;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
