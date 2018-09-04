@@ -6,7 +6,7 @@ public class Jobs {
     private String isDeletable;
     private String priority;
 
-    public void Jobs(String jobName, String jobDesc, String isDeletable, String priority){
+    public Jobs(String jobName, String jobDesc, String isDeletable, String priority){
         this.name = jobName;
         this.desc = jobDesc;
         this.isDeletable = isDeletable;
