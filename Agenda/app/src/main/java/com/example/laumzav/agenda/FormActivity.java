@@ -25,17 +25,6 @@ public class FormActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
         helper = new FormHelper(this);
-
-//        Button saveButton = (Button) findViewById(R.id.form_saveButton);
-//        saveButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(FormActivity.this, "Saved", Toast.LENGTH_LONG).show();
-////                Save in a data bank
-//                finish();
-//            }
-//        });
-
     }
 
     @Override
