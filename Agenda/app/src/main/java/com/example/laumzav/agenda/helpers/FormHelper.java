@@ -13,7 +13,7 @@ public class FormHelper {
     private EditText descField;
     private RatingBar priority;
     private CheckBox isDeletable;
-    Jobs job;
+    private Jobs job;
 
     public FormHelper(FormActivity activity){
         nameField = (EditText) activity.findViewById(R.id.form_jobName);
@@ -26,7 +26,17 @@ public class FormHelper {
                 Float.toString(priority.getRating()));
     }
 
+    public void saveOnDB(){
+        // TODO: 04/09/18 save on databank
+    }
 
+    public Jobs getJob(){
+        return job;
+    }
+
+    public String getJobName(){
+        return job.getName();
+    }
 
 
 
