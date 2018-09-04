@@ -35,7 +35,8 @@ public class FormHelper {
     }
 
     public String getJobName(){
-        return job.getName();
+        String jobName = job.getName();
+        return jobName;
     }
 
 
