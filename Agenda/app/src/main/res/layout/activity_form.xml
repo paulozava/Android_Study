@@ -47,12 +47,12 @@
                 android:checked="true"
                 android:hint="Mark this if you want that this job won't be deletable"/>
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Salve !"
-                android:id="@+id/form_saveButton"/>
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:text="Salve !"-->
+                <!--android:id="@+id/form_saveButton"/>-->
 
         </LinearLayout>
 
