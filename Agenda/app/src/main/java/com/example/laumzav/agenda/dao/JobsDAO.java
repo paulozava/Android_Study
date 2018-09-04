@@ -7,9 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.laumzav.agenda.models.Jobs;
 
-public class jobsDAO extends SQLiteOpenHelper {
+public class JobsDAO extends SQLiteOpenHelper {
 
-    public jobsDAO(Context context) {
+    public JobsDAO(Context context) {
         super(context, "Jobs", null, 1);
     }
 
@@ -26,7 +26,7 @@ public class jobsDAO extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertOnDB(Jobs job){
+    public void insert(Jobs job){
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues data = new ContentValues();

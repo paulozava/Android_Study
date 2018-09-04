@@ -14,11 +14,10 @@ import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import com.example.laumzav.agenda.dao.JobsDAO;
 import com.example.laumzav.agenda.helpers.FormHelper;
 
 public class FormActivity extends AppCompatActivity {
-
-    private FormHelper helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +36,14 @@ public class FormActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.form_save_button:
-                helper = new FormHelper(this);
+                FormHelper helper = new FormHelper(this);
+                JobsDAO dao = new JobsDAO(this);
+                helper.saveOnDB(dao);
+                dao.close();
                 Toast.makeText(FormActivity.this, "Job " + helper.getJobName() + " saved", Toast.LENGTH_LONG).show();
                 break;
             case R.id.form_discart_button:
-                Toast.makeText(FormActivity.this, "Discarted", Toast.LENGTH_LONG).show();
+                Toast.makeText(FormActivity.this, "Discarded", Toast.LENGTH_LONG).show();
                 break;
         }
         finish();

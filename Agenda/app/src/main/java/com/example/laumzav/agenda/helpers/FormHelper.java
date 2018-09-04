@@ -6,6 +6,7 @@ import android.widget.RatingBar;
 
 import com.example.laumzav.agenda.FormActivity;
 import com.example.laumzav.agenda.R;
+import com.example.laumzav.agenda.dao.JobsDAO;
 import com.example.laumzav.agenda.models.Jobs;
 
 public class FormHelper {
@@ -26,8 +27,8 @@ public class FormHelper {
                 priority.getRating());
     }
 
-    public void saveOnDB(){
-        // TODO: 04/09/18 save on databank
+    public void saveOnDB(JobsDAO dao){
+        dao.insert(job);
     }
 
     public Jobs getJob(){
@@ -38,7 +39,6 @@ public class FormHelper {
         String jobName = job.getName();
         return jobName;
     }
-
 
 
 }
