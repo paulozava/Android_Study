@@ -52,6 +52,7 @@ public class JobsDAO extends SQLiteOpenHelper {
         Cursor c = db.rawQuery(sql, null);
         while (c.moveToNext()){
             Jobs job = new Jobs(
+                    c.getLong(c.getColumnIndex("id")),
                     c.getString(c.getColumnIndex("jobName")),
                     c.getString(c.getColumnIndex("jobDesc")),
                     c.getString(c.getColumnIndex("isDeletable")),

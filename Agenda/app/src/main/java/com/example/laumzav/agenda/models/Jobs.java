@@ -4,13 +4,13 @@ public class Jobs {
     private long id;
     private String name;
     private String desc;
-    private boolean isDeletable;
+    private String deletable;
     private float priority;
 
-    public Jobs(String jobName, String jobDesc, boolean isDeletable, float priority){
+    public Jobs(long id, String jobName, String jobDesc, String deletable, float priority){
         this.name = jobName;
         this.desc = jobDesc;
-        this.isDeletable = isDeletable;
+        this.deletable = deletable;
         this.priority = priority;
     }
 
@@ -23,7 +23,14 @@ public class Jobs {
     }
 
     public boolean isDeletable() {
-        return isDeletable;
+        if (deletable == "true"){
+            return true;
+        }
+        return false;
+    }
+
+    public String getDeletable() {
+        return deletable;
     }
 
     public float getPriority() {
@@ -32,6 +39,6 @@ public class Jobs {
 
     @Override
     public String toString() {
-        return name;
+        return this.getName();
     }
 }
