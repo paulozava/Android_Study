@@ -1,6 +1,7 @@
 package com.example.laumzav.agenda.models;
 
 public class Jobs {
+    private long id;
     private String name;
     private String desc;
     private String isDeletable;
