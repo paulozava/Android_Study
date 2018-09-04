@@ -2,11 +2,13 @@ package com.example.laumzav.agenda.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.laumzav.agenda.models.Jobs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class JobsDAO extends SQLiteOpenHelper {
@@ -42,6 +44,22 @@ public class JobsDAO extends SQLiteOpenHelper {
     }
 
     public List<Jobs> findJobs() {
-        return List<Jobs>;
+
+        List<Jobs> jobsFound = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+        String sql = "SELECT * FROM Jobs;";
+        Cursor c = db.rawQuery(sql, null);
+        while (c.moveToNext()){
+            Jobs job = new Jobs(
+                    c.getString(c.getColumnIndex("jobName")),
+                    c.getString(c.getColumnIndex("jobDesc")),
+                    c.getString(c.getColumnIndex("isDeletable")),
+                    c.getFloat(c.getColumnIndex("priority"))
+            );
+            jobsFound.add(job);
+        }
+        return jobsFound;
+
     }
 }
