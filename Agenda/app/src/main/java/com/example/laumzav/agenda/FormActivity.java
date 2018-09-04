@@ -49,8 +49,7 @@ public class FormActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.form_save_button:
-
-                Toast.makeText(FormActivity.this, "Job " + name + " saved", Toast.LENGTH_LONG).show();
+                Toast.makeText(FormActivity.this, "Job " + helper.getJobName() + " saved", Toast.LENGTH_LONG).show();
                 break;
             case R.id.form_discart_button:
                 Toast.makeText(FormActivity.this, "Discarted", Toast.LENGTH_LONG).show();
@@ -58,20 +57,6 @@ public class FormActivity extends AppCompatActivity {
         }
         finish();
         return true;
-    }
-
-    public String findItemOnForm(int id){
-        EditText itemField = (EditText) findViewById(id);
-        String item = itemField.getText().toString();
-        return item;
-    }
-
-    public void saveitensOnDB(){
-        String name = findItemOnForm(R.id.form_jobName);
-        String desc = findItemOnForm(R.id.form_jobDesc);
-        String priority = findItemOnForm(R.id.form_priority);
-//        String isDeletable = findItemOnForm(R.id.form_deletableJob);
-//        Toast.makeText(FormActivity.this, "Job " + name + " saved", Toast.LENGTH_LONG).show();
     }
 
 }
