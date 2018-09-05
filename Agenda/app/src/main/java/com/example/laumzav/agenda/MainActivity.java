@@ -2,35 +2,39 @@ package com.example.laumzav.agenda;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.laumzav.agenda.dao.JobsDAO;
 import com.example.laumzav.agenda.models.Jobs;
 
-import java.text.Normalizer;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     JobsDAO dao;
+    ListView nameList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button fab = (Button) findViewById(R.id.fab);
+        nameList = findViewById(R.id.main_nameList);
+        registerForContextMenu(nameList);
+
+        Button fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,16 +46,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        chargeJobsList();
+        inflateJobsList();
     }
 
-    private void chargeJobsList() {
+    private void inflateJobsList() {
         dao = new JobsDAO(this);
         List<Jobs> jobsList = dao.findJobs();
         dao.close();
 
-        ArrayAdapter<Jobs> adapter = new ArrayAdapter<Jobs>(this, android.R.layout.simple_list_item_1, jobsList);
-        ListView nameList = findViewById(R.id.main_nameList);
+        ArrayAdapter<Jobs> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, jobsList);
         nameList.setAdapter(adapter);
     }
 
@@ -75,5 +78,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, final ContextMenu.ContextMenuInfo menuInfo) {
+        MenuItem toDelete = menu.add("Delete");
+        toDelete.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener(){
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
+                Jobs job = (Jobs) nameList.getItemAtPosition(info.position);
+                dao = new JobsDAO(MainActivity.this);
+                dao.deleteJob(job);
+                dao.close();
+                Toast.makeText(MainActivity.this, job.getName() + " is deleted", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
     }
 }

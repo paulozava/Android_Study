@@ -61,4 +61,10 @@ public class JobsDAO extends SQLiteOpenHelper {
         return jobsFound;
 
     }
+
+    public void deleteJob(Jobs job) {
+        SQLiteDatabase db = getWritableDatabase();
+        String[] clauses = {job.getId(), job.getName()};
+        db.delete("Jobs", "id = ? AND jobName = ?", clauses);
+    }
 }

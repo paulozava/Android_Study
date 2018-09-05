@@ -36,8 +36,8 @@ public class Jobs {
         return this.getName();
     }
 
-    public int getId() {
-        return id;
+    public String getId() {
+        return String.valueOf(id);
     }
 
     public void setId(int id) {
