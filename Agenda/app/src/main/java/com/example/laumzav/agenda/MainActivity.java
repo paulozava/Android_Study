@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        inflateJobsList();
+        loadJobsList();
     }
 
-    private void inflateJobsList() {
+    private void loadJobsList() {
         dao = new JobsDAO(this);
         List<Jobs> jobsList = dao.findJobs();
         dao.close();
@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 dao.deleteJob(job);
                 dao.close();
                 Toast.makeText(MainActivity.this, job.getName() + " is deleted", Toast.LENGTH_SHORT).show();
+                loadJobsList();
                 return false;
             }
         });
