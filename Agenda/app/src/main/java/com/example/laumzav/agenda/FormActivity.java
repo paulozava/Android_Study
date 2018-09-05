@@ -2,6 +2,7 @@ package com.example.laumzav.agenda;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,7 +31,9 @@ public class FormActivity extends AppCompatActivity {
             case R.id.form_save_button:
                 FormHelper helper = new FormHelper(this);
                 helper.saveOnDB();
-                Toast.makeText(FormActivity.this, "Job " + helper.getJobName() + " saved", Toast.LENGTH_LONG).show();
+                Toast toastSaved = Toast.makeText(FormActivity.this, "Job " + helper.getJobName() + " saved", Toast.LENGTH_LONG);
+                toastSaved.setGravity(Gravity.BOTTOM, 0, 26);
+                toastSaved.show();
                 break;
             case R.id.form_discart_button:
                 Toast.makeText(FormActivity.this, "Discarded", Toast.LENGTH_LONG).show();
