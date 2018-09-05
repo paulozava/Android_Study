@@ -6,10 +6,6 @@ public class Jobs {
     private String desc;
     private float priority;
 
-    public Jobs(){
-
-    }
-
     public Jobs(int id, String jobName, String jobDesc, float priority){
         this.id = id;
         this.name = jobName;

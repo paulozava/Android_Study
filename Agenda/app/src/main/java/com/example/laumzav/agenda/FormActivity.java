@@ -1,20 +1,12 @@
 package com.example.laumzav.agenda;
 
-import android.content.ClipData;
-import android.support.v4.widget.PopupMenuCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.PopupMenu;
-import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import com.example.laumzav.agenda.dao.JobsDAO;
 import com.example.laumzav.agenda.helpers.FormHelper;
 
 public class FormActivity extends AppCompatActivity {

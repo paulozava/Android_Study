@@ -1,6 +1,5 @@
 package com.example.laumzav.agenda.helpers;
 
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RatingBar;
 
@@ -14,11 +13,11 @@ public class FormHelper {
     private Jobs job;
 
     public FormHelper(FormActivity activity){
-        activity = activity;
+        this.activity = activity;
 
-        EditText nameField = (EditText) activity.findViewById(R.id.form_jobName);
-        EditText descField = (EditText) activity.findViewById(R.id.form_jobDesc);
-        RatingBar priority = (RatingBar) activity.findViewById(R.id.form_priority);
+        EditText nameField = this.activity.findViewById(R.id.form_jobName);
+        EditText descField = this.activity.findViewById(R.id.form_jobDesc);
+        RatingBar priority = this.activity.findViewById(R.id.form_priority);
 
 
         job = new Jobs(nameField.getText().toString(),

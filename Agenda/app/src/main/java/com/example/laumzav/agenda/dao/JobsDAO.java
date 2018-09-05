@@ -14,7 +14,7 @@ import java.util.List;
 public class JobsDAO extends SQLiteOpenHelper {
 
     public JobsDAO(Context context) {
-        super(context, "Jobs", null, 1);
+        super(context, "Jobs", null, 4);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class JobsDAO extends SQLiteOpenHelper {
 
     public List<Jobs> findJobs() {
 
-        List<Jobs> jobsFound = new ArrayList<Jobs>();
+        List<Jobs> jobsFound = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
         String sql = "SELECT * FROM Jobs;";
