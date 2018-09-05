@@ -19,7 +19,7 @@ public class JobsDAO extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE Jobs (id INTEGER PRIMARY KEY, jobName TEXT NOT NULL, jobDesc TEXT, priority REAL, isDeletable TEXT);";
+        String sql = "CREATE TABLE Jobs (id INTEGER PRIMARY KEY AUTOINCREMENT, jobName TEXT NOT NULL, jobDesc TEXT, priority REAL, isDeletable TEXT);";
         db.execSQL(sql);
     }
 
