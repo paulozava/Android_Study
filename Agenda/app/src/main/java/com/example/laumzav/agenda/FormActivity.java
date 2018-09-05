@@ -8,9 +8,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.laumzav.agenda.helpers.CustomToast;
 import com.example.laumzav.agenda.helpers.FormHelper;
 
 public class FormActivity extends AppCompatActivity {
+
+    private CustomToast customToast = new CustomToast();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +34,10 @@ public class FormActivity extends AppCompatActivity {
             case R.id.form_save_button:
                 FormHelper helper = new FormHelper(this);
                 helper.saveOnDB();
-                Toast toastSaved = Toast.makeText(FormActivity.this, "Job " + helper.getJobName() + " saved", Toast.LENGTH_LONG);
-                toastSaved.setGravity(Gravity.BOTTOM, 0, 26);
-                toastSaved.show();
+                customToast.makeMessage(FormActivity.this, "Job " + helper.getJobName() + " saved");
                 break;
             case R.id.form_discart_button:
-                Toast toastDiscarded = Toast.makeText(FormActivity.this, "Discarded", Toast.LENGTH_LONG);
-                toastDiscarded.setGravity(Gravity.BOTTOM, 0, 36);
-                toastDiscarded.show();
+                customToast.makeMessage(FormActivity.this, "Discarded");
                 break;
         }
         finish();
