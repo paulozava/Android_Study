@@ -19,7 +19,7 @@ import com.example.laumzav.agenda.models.Jobs;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class ListActivity extends AppCompatActivity {
 
     JobsDAO dao;
     ListView nameList;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> nameList, View item, int position, long id) {
                 Jobs jobs = (Jobs) nameList.getItemAtPosition(position);
-                Intent openJobDesc = new Intent(MainActivity.this, JobDescActivity.class);
+                Intent openJobDesc = new Intent(ListActivity.this, JobDescActivity.class);
                 openJobDesc.putExtra("jobs", jobs);
                 startActivity(openJobDesc);
             }
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, FormActivity.class));
+                startActivity(new Intent(ListActivity.this, FormActivity.class));
             }
         });
     }
@@ -97,10 +97,10 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) menuInfo;
                 Jobs job = (Jobs) nameList.getItemAtPosition(info.position);
-                dao = new JobsDAO(MainActivity.this);
+                dao = new JobsDAO(ListActivity.this);
                 dao.deleteJob(job);
                 dao.close();
-                Toast.makeText(MainActivity.this, job.getName() + " is deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ListActivity.this, job.getName() + " is deleted", Toast.LENGTH_SHORT).show();
                 loadJobsList();
                 return false;
             }
