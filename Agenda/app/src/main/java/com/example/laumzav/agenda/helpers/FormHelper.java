@@ -22,9 +22,9 @@ public class FormHelper {
         CheckBox isDeletable = (CheckBox) activity.findViewById(R.id.form_deletableJob);
 
         job = new Jobs(nameField.getText().toString(),
-                descField.getText().toString(),
-                isDeletable.isChecked(),
-                priority.getRating());
+                       descField.getText().toString(),
+                       String.valueOf(isDeletable.isChecked()),
+                       priority.getRating());
     }
 
     public void saveOnDB(){
@@ -38,8 +38,7 @@ public class FormHelper {
     }
 
     public String getJobName(){
-        String jobName = job.getName();
-        return jobName;
+        return job.getName();
     }
 
 
