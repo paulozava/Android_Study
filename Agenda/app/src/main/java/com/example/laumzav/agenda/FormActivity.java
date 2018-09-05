@@ -36,7 +36,9 @@ public class FormActivity extends AppCompatActivity {
                 toastSaved.show();
                 break;
             case R.id.form_discart_button:
-                Toast.makeText(FormActivity.this, "Discarded", Toast.LENGTH_LONG).show();
+                Toast toastDiscarded = Toast.makeText(FormActivity.this, "Discarded", Toast.LENGTH_LONG);
+                toastDiscarded.setGravity(Gravity.BOTTOM, 0, 36);
+                toastDiscarded.show();
                 break;
         }
         finish();
