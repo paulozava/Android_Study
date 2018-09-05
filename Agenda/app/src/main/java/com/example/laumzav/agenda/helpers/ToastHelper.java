@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.Gravity;
 import android.widget.Toast;
 
-public class CustomToast {
+public class ToastHelper {
 
     public void makeMessage(Context context, String message){
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
