@@ -21,8 +21,8 @@
         </activity>
         <activity
             android:name=".FormActivity"
-            android:label="New Job">
-        </activity>
+            android:label="New Job"></activity>
+        <activity android:name=".JobDescActivity"></activity>
     </application>
 
 </manifest>

@@ -33,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
 
         nameList = findViewById(R.id.main_nameList);
         registerForContextMenu(nameList);
+        nameList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> nameList, View item, int position, long id) {
+                Jobs jobs = (Jobs) nameList.getItemAtPosition(position);
+                Intent openJobDesc = new Intent(MainActivity.this, JobDescActivity.class);
+
+                startActivity(openJobDesc);
+            }
+        });
 
         Button fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
