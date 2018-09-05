@@ -1,24 +1,25 @@
 package com.example.laumzav.agenda.models;
 
 public class Jobs {
-    private long id;
+    private int id;
     private String name;
     private String desc;
-    private String deletable;
     private float priority;
 
-    public Jobs(long id, String jobName, String jobDesc, String deletable, float priority){
+    public Jobs(){
+
+    }
+
+    public Jobs(int id, String jobName, String jobDesc, float priority){
         this.id = id;
         this.name = jobName;
         this.desc = jobDesc;
-        this.deletable = deletable;
         this.priority = priority;
     }
 
-    public Jobs(String jobName, String jobDesc, String deletable, float priority){
+    public Jobs(String jobName, String jobDesc, float priority){
         this.name = jobName;
         this.desc = jobDesc;
-        this.deletable = deletable;
         this.priority = priority;
     }
 
@@ -30,17 +31,6 @@ public class Jobs {
         return desc;
     }
 
-    public boolean isDeletable() {
-        if (deletable == "true"){
-            return true;
-        }
-        return false;
-    }
-
-    public String getDeletable() {
-        return deletable;
-    }
-
     public float getPriority() {
         return priority;
     }
@@ -48,5 +38,25 @@ public class Jobs {
     @Override
     public String toString() {
         return this.getName();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public void setPriority(float priority) {
+        this.priority = priority;
     }
 }

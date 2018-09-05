@@ -19,17 +19,16 @@ public class FormHelper {
         EditText nameField = (EditText) activity.findViewById(R.id.form_jobName);
         EditText descField = (EditText) activity.findViewById(R.id.form_jobDesc);
         RatingBar priority = (RatingBar) activity.findViewById(R.id.form_priority);
-        CheckBox isDeletable = (CheckBox) activity.findViewById(R.id.form_deletableJob);
+
 
         job = new Jobs(nameField.getText().toString(),
                        descField.getText().toString(),
-                       String.valueOf(isDeletable.isChecked()),
                        priority.getRating());
     }
 
     public void saveOnDB(){
         JobsDAO dao = new JobsDAO(activity);
-        dao.insert(job);
+        dao.saveJob(job);
         dao.close();
     }
 

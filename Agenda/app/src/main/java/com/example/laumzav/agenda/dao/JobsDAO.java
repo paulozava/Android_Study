@@ -19,45 +19,42 @@ public class JobsDAO extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE Jobs (id INTEGER PRIMARY KEY AUTOINCREMENT, jobName TEXT NOT NULL, jobDesc TEXT, priority REAL, isDeletable TEXT);";
+        String sql = "CREATE TABLE Jobs (id INTEGER PRIMARY KEY AUTOINCREMENT, jobName TEXT NOT NULL, jobDesc TEXT, priority REAL);";
         db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "DROP TABLE IF EXISTS Alunos";
+        String sql = "DROP TABLE IF EXISTS Jobs";
         db.execSQL(sql);
         onCreate(db);
     }
 
-    public void insert(Jobs job){
+    public void saveJob(Jobs job){
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues data = new ContentValues();
         data.put("jobName", job.getName());
         data.put("jobDesc", job.getDesc());
         data.put("priority", job.getPriority());
-        data.put("isDeletable", job.isDeletable());
 
         db.insert("Jobs", null, data);
-        db.close();
     }
 
     public List<Jobs> findJobs() {
 
-        List<Jobs> jobsFound = new ArrayList<>();
+        List<Jobs> jobsFound = new ArrayList<Jobs>();
 
         SQLiteDatabase db = getReadableDatabase();
         String sql = "SELECT * FROM Jobs;";
         Cursor c = db.rawQuery(sql, null);
         while (c.moveToNext()){
             Jobs job = new Jobs(
-                    c.getLong(c.getColumnIndex("id")),
+                    c.getInt(c.getColumnIndex("id")),
                     c.getString(c.getColumnIndex("jobName")),
                     c.getString(c.getColumnIndex("jobDesc")),
-                    c.getString(c.getColumnIndex("isDeletable")),
-                    c.getFloat(c.getColumnIndex("priority"))
-            );
+                    c.getFloat(c.getColumnIndex("priority")));
+
             jobsFound.add(job);
         }
         c.close();

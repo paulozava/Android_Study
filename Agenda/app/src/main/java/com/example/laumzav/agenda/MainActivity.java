@@ -21,6 +21,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    JobsDAO dao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,14 +30,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        List<Jobs> jobsList = findJobsList();
-
-        ListView nameList = findViewById(R.id.main_nameList);
-        ArrayAdapter<Jobs> adapter = new ArrayAdapter<Jobs>(this, android.R.layout.simple_list_item_1, jobsList);
-
-        nameList.setAdapter(adapter);
-
-       Button fab = (Button) findViewById(R.id.fab);
+        Button fab = (Button) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,11 +39,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    protected List<Jobs> findJobsList() {
-        JobsDAO dao = new JobsDAO(this);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        chargeJobsList();
+    }
+
+    private void chargeJobsList() {
+        dao = new JobsDAO(this);
         List<Jobs> jobsList = dao.findJobs();
         dao.close();
-        return jobsList;
+
+        ArrayAdapter<Jobs> adapter = new ArrayAdapter<Jobs>(this, android.R.layout.simple_list_item_1, jobsList);
+        ListView nameList = findViewById(R.id.main_nameList);
+        nameList.setAdapter(adapter);
     }
 
     @Override

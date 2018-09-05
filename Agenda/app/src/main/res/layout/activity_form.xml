@@ -40,14 +40,14 @@
                 android:max="3"
                 android:id="@+id/form_priority"/>
 
-            <CheckBox
-                android:id="@+id/form_deletableJob"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Is it deletable?"
-                android:layout_gravity="center"
-                android:checked="true"
-                android:hint="Mark this if you want that this job won't be deletable"/>
+            <!--<CheckBox-->
+                <!--android:id="@+id/form_deletableJob"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="Is it deletable?"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:checked="true"-->
+                <!--android:hint="Mark this if you want that this job won't be deletable"/>-->
 
             <!--<Button-->
                 <!--android:layout_width="wrap_content"-->
