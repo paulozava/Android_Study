@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> nameList, View item, int position, long id) {
                 Jobs jobs = (Jobs) nameList.getItemAtPosition(position);
                 Intent openJobDesc = new Intent(MainActivity.this, JobDescActivity.class);
-
+                openJobDesc.putExtra("jobs", jobs);
                 startActivity(openJobDesc);
             }
         });
